@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using tp01_20221_br1595.Models;
+using AppProvincias.APIs;
 
 namespace tp01_20221_br1595.Controllers
 {
@@ -77,23 +78,16 @@ namespace tp01_20221_br1595.Controllers
 
         public string Problema3(string Numero1, string Numero2)
         {
-            try
-            {
-                //ApiProvincias;
+            APIProvincias apiProvincias = new APIProvincias();
+            List<Provincias> prov = apiProvincias.GetListadoDeProvincias();
+            
+            string ListadoProvincias = "";
 
-            }
-            catch (FormatException Ex)
+            for(int indice=0; indice < prov.Count; indice++)
             {
-                return "Error en el ingreso de datos" + Ex.Message;
+                ListadoProvincias += ($"{0} Id = {1}\n", prov[indice].Nombre, prov[indice].ID);
             }
-            catch (OverflowException Ex)
-            {
-                return "Error en el ingreso de datos" + Ex.Message;
-            }
-            catch (DivideByZeroException Ex)
-            {
-                return "No es posible dividir un número en cero" + Ex.Message;
-            }
+                return ListadoProvincias;
         }
         public string Problema4(string Numero1, string Numero2)
         {
