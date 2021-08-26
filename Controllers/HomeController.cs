@@ -34,10 +34,10 @@ namespace tp01_20221_br1595.Controllers
             try
             {
                 string Resultado = "";
-                int a = int.Parse(Numero);
+                int b = int.Parse(Numero);
 
-                Resultado = Convert.ToString(a * a);
-                return Resultado;
+                Resultado = Convert.ToString(b * b);
+                return "El cuadrado de " + b + " es igual a " + Resultado;
 
             }
             catch(FormatException Ex)
@@ -59,7 +59,7 @@ namespace tp01_20221_br1595.Controllers
                 float Operacion = a / b;
 
                 var Resultado = Operacion.ToString("0.###");
-                return Resultado;
+                return a + " / " + b + " = " + Resultado;
 
             }
             catch (FormatException Ex)
@@ -76,16 +76,15 @@ namespace tp01_20221_br1595.Controllers
             }
         }
 
-        public string Problema3(string Numero1, string Numero2)
+        public string Problema3()
         {
             APIProvincias apiProvincias = new APIProvincias();
-            List<Provincias> prov = apiProvincias.GetListadoDeProvincias();
+            List<Provincia> prov = apiProvincias.GetListadoDeProvincias();
             
             string ListadoProvincias = "";
-
-            for(int indice=0; indice < prov.Count; indice++)
+            for (int indice=0; indice < prov.Count; indice++)
             {
-                ListadoProvincias += ($"{0} Id = {1}\n", prov[indice].Nombre, prov[indice].ID);
+                ListadoProvincias += prov[indice].nombre + " - id = " + prov[indice].id + "\n";
             }
                 return ListadoProvincias;
         }
@@ -98,7 +97,7 @@ namespace tp01_20221_br1595.Controllers
                 float Operacion = a / b;
 
                 var Resultado = Operacion.ToString("0.###");
-                return Resultado;
+                return "Kilometros por litro: " + Resultado;
 
             }
             catch (FormatException Ex)
